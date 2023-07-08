@@ -1,6 +1,6 @@
 async function addItem(itemData: FeatureItem): Promise<void> {
     try {
-        await fetch('http://localhost:3000/api/addItem', {
+        await fetch('/api/addItem', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ async function addItem(itemData: FeatureItem): Promise<void> {
 
 async function getAllItems(): Promise<FeatureItem[]> {
     try {
-        const response = await fetch('http://localhost:3000/api/getAlltems');
+        const response = await fetch('/api/getAlltems');
         if (!response.ok) {
             throw new Error('Failed to fetch items');
         }
