@@ -11,14 +11,30 @@ app.prepare().then(() => {
 
   server.use(express.json());
 
+  // server.post('/api/post', async (_req: Request, res: Response, next: NextFunction) => {
+  //   const { title, description } = _req.body;
+
+  //   if (!title || !description) {
+  //     res.status(400).json({ message: 'Missing required data' });
+  //   } 
+
+  //   // your POST logic here
+
+  //   res.status(200).json({ success: true });
+  // });
+
   server.post('/api/post', async (_req: Request, res: Response, next: NextFunction) => {
     const { title, description } = _req.body;
 
     if (!title || !description) {
       res.status(400).json({ message: 'Missing required data' });
-    } 
+      return;
+    }
 
-    // your POST logic here
+    // Set cache control headers
+    res.setHeader('Cache-Control', 'no-cache'); // Disable caching
+
+    // Your POST logic here
 
     res.status(200).json({ success: true });
   });
